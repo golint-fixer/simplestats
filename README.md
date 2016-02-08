@@ -6,3 +6,33 @@ Simple stats for tracking internal stats
 [![GoDoc](http://godoc.org/github.com/linkosmos/simplestats?status.svg)](http://godoc.org/github.com/linkosmos/simplestats)
 [![Go Report Card](http://goreportcard.com/badge/linkosmos/simplestats)](http://goreportcard.com/report/linkosmos/simplestats)
 [![BSD License](http://img.shields.io/badge/license-BSD-blue.svg)](http://opensource.org/licenses/BSD-3-Clause)
+
+### Methods
+
+ - New() *Stats
+ - Increment(key string)
+ - IncrementBy(key string, value int64)
+ - Get(key string) int64
+
+### Usage
+
+```go
+  package main
+
+  import (
+    "fmt"
+
+    "github.com/linkosmos/simplestats"
+  )
+
+  func main() {
+    s := simplestats.New()
+    s.Increment("one")
+    s.Increment("two")
+    s.Increment("one")
+
+    fmt.Println(s.Get("one"))
+
+    // 2
+  }
+```
