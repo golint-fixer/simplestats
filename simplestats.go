@@ -45,3 +45,11 @@ func (s *Stats) Get(key string) int64 {
 	s.mutex.Unlock()
 	return value
 }
+
+// GetData - returns tracked data
+func (s *Stats) GetData() map[string]int64 {
+	s.mutex.Lock()
+	data := s.data
+	s.mutex.Unlock()
+	return data
+}

@@ -16,4 +16,7 @@ func TestIncrement(t *testing.T) {
 	s.Increment(key)
 
 	assert.EqualValues(t, 12, s.Get(key))
+
+	data := s.GetData()
+	assert.EqualValues(t, data[key], 12)
 }
